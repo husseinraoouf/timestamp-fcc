@@ -1,7 +1,12 @@
-var express = require('express');
+const express = require('express'),
+      exphbs = require('express-handlebars');
 
 var app = express();
-// server.use('/public', express.static(__dirname + '/public'));
+
+var hbs = exphbs.create({});
+app.engine('handlebars', hbs.engine);
+app.set('view engine', 'handlebars');
+
 
 function formatDate(date) {
   var monthNames = [
@@ -14,12 +19,13 @@ function formatDate(date) {
   var day = date.getDate();
   var monthIndex = date.getMonth();
   var year = date.getFullYear();
-  
+
   return monthNames[monthIndex] + ' ' + day + ',' + ' ' + year;
 };
-1450137600000
+
+
 app.get('/', function(req, res){
-  res.sendFile(__dirname + '/views/index.html');
+  res.render('home', {url: 'https://hussein-timestamp-fcc.herokuapp.com'});
 });
 
 app.get('/:time', function(req, res){
@@ -29,12 +35,12 @@ app.get('/:time', function(req, res){
         var date = Date.parse(req.params.time);
         if (date){
             unix = date;
-            natural = req.params.time;    
+            natural = req.params.time;
         };
     } else {
         // console.log(req.params.time + "0".repeat(13 - req.params.time.length));
         if(req.params.time.length <= 13) {
-            var date = new Date(parseInt(req.params.time + "0".repeat(13 - req.params.time.length)));   
+            var date = new Date(parseInt(req.params.time + "0".repeat(13 - req.params.time.length)));
         }
         if (date){
             unix = req.params.time;
@@ -56,9 +62,7 @@ app.get('/:time', function(req, res){
 
 
 
-var port = 8080;
+var port = process.argv[2];
 app.listen(port, function() {
   console.log('server listening on port ' + port);
-  console.log('https://freecodecamp-husseinraoouf.c9users.io');
 });
-
