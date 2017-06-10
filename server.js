@@ -38,7 +38,6 @@ app.get('/:time', function(req, res){
             natural = req.params.time;
         };
     } else {
-        // console.log(req.params.time + "0".repeat(13 - req.params.time.length));
         if(req.params.time.length <= 13) {
             var date = new Date(parseInt(req.params.time + "0".repeat(13 - req.params.time.length)));
         }
@@ -47,9 +46,6 @@ app.get('/:time', function(req, res){
             natural = formatDate(date);
         };
     }
-//   console.log(parseInt(req.params.time));
-//   var date = new Date(parseInt(req.params.time));
-//   console.log(date);
   var obj = {
       "unix":unix,
       "natural":natural

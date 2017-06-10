@@ -1,7 +1,7 @@
 <!doctype html>
 <html lang="en">
     <head>
-        <title>Timestamp microservice</title>
+        <title>URL Shortener Microservice</title>
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
         <style media="screen">
             .container {
@@ -12,23 +12,28 @@
             .header {
                 text-align: center;
             }
+            br {
+                display: block;
+                margin-bottom: 15px;
+            }
         </style>
 
     </head>
     <body>
         <div class="container">
             <h1 class="header">
-                Timestamp microservice
+                URL Shortener Microservice
             </h1>
-                User stories:
-                <ul>1) I can pass a string as a parameter, and it will check to see whether that string
-                contains either a unix timestamp or a natural language date (example: January 1, 2016)</ul>
-                <ul>2) If it does, it returns both the Unix timestamp and the natural language form of that date.</ul>
-                <ul>3) If it does not contain a date or Unix timestamp, it returns null for those properties.</ul>
+            <p>User stories:</p>
+            <ol>
+                <li>I can pass a string as a parameter, and it will check to see whether that string
+                contains either a unix timestamp or a natural language date (example: January 1, 2016)</li>
+                <li>If it does, it returns both the Unix timestamp and the natural language form of that date.</li>
+                <li>If it does not contain a date or Unix timestamp, it returns null for those properties.</li>
+            </ol>
 
             <h3>Example usage:</h3>
-            <code>{{url}}/December%2015,%202015</code><br>
-            <code>{{url}}/1450137600</code>
+            <code>{{url}}/new/https://www.google.com</code><br>
             <h3>Example output:</h3>
             <code>
                 {
@@ -36,6 +41,7 @@
                   "natural": "December 15, 2015"
                 }
             </code>
+            <br>
         </div>
     </body>
 </html>
